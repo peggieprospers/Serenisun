@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Service = require('../models/Service');
 const Session = require('../models/Session');
+require('../models/Instructor'); 
 
 exports.listServices = async (req, res) => {
   const filter = {};
