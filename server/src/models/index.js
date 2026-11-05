@@ -1,4 +1,4 @@
-require('./User');
+require('./user');
 require('./Service');
 require('./Instructor');
 require('./Session');
