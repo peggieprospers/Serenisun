@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import ServiceCard from '../components/serviceCard';
+import ServiceCard from '../components/ServiceCard';
 
 export default function Services() {
   const [services, setServices] = useState([]);

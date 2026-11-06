@@ -3,11 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { typeLabel } from '../components/ServiceCard';
-
-const formatTime = (iso) =>
-  new Date(iso).toLocaleString([], {
-    weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit',
-  });
+import { formatTime } from '../utils/format';
 
 export default function ServiceDetail() {
   const { id } = useParams();

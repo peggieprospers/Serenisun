@@ -65,3 +65,5 @@ select { padding: 10px 14px; border: 1.5px solid var(--sage); border-radius: 999
 .spots { font-size: 0.95rem; color: #44625a; }
 .success { color: #1f6b3a; font-weight: 600; }
 .back-link { display: inline-block; margin-bottom: 16px; }
+
+.page h2 { margin-top: 32px; }
