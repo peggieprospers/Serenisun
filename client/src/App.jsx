@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Dashboard from './pages/Dashboard';
+import RescheduleBooking from './pages/RescheduleBooking';
 
 export default function App() {
   return (
@@ -22,6 +23,10 @@ export default function App() {
           path="/dashboard"
           element={<ProtectedRoute><Dashboard /></ProtectedRoute>}
         />
+        <Route
+  path="/bookings/:id/reschedule"
+  element={<ProtectedRoute><RescheduleBooking /></ProtectedRoute>}
+/>
       </Routes>
     </>
   );

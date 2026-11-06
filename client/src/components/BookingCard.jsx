@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { formatTime } from '../utils/format';
 import { typeLabel } from './ServiceCard';
 
@@ -15,7 +16,9 @@ export default function BookingCard({ booking, onCancel, cancelling }) {
         <div className="spots">
           {formatTime(session.startsAt)} · {typeLabel(service.type)} · {service.durationMinutes} min
         </div>
-        <div className="spots">with {session.instructorId ? session.instructorId.name : 'your instructor'}</div>
+        <div className="spots">
+          with {session.instructorId ? session.instructorId.name : 'your instructor'}
+        </div>
         {booking.status === 'cancelled' && <div className="spots">Cancelled</div>}
         {upcoming && session.meetingLink && (
           <div className="spots">
@@ -23,10 +26,18 @@ export default function BookingCard({ booking, onCancel, cancelling }) {
           </div>
         )}
       </div>
+
       {upcoming && (
-        <button className="btn btn-ghost" onClick={() => onCancel(booking._id)} disabled={cancelling}>
-          {cancelling ? 'Cancelling...' : 'Cancel'}
-        </button>
+        <div className="actions">
+          <Link to={`/bookings/${booking._id}/reschedule`} className="btn">Reschedule</Link>
+          <button
+            className="btn btn-ghost"
+            onClick={() => onCancel(booking._id)}
+            disabled={cancelling}
+          >
+            {cancelling ? 'Cancelling...' : 'Cancel'}
+          </button>
+        </div>
       )}
     </li>
   );
