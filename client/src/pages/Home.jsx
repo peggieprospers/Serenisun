@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Home() {
+  const { user } = useAuth();
+
   return (
     <main className="hero">
       <h1>Serenisun</h1>
@@ -9,7 +12,11 @@ export default function Home() {
         Book live yoga and meditation sessions with real instructors, and let a gentle AI
         guide help you find the right one.
       </p>
-      <Link to="/register" className="btn">Get started</Link>
+      {user ? (
+        <Link to="/services" className="btn">Find a session</Link>
+      ) : (
+        <Link to="/register" className="btn">Get started</Link>
+      )}
     </main>
   );
 }

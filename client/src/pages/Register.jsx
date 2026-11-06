@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Register() {
-  const { register } = useAuth();
+const { user, register } = useAuth();
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ export default function Register() {
       setSubmitting(false);
     }
   }
-
+if (user) return <Navigate to="/dashboard" replace />;
   return (
     <main className="auth-card">
       <h1>Create your account</h1>
