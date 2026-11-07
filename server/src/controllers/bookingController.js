@@ -3,8 +3,11 @@ const Booking = require('../models/Booking');
 const Session = require('../models/Session');
 const { BookingError, reserveSpot, releaseSpot } = require('../services/bookingService');
 
+const clean = (value, max) =>
+  typeof value === 'string' && value.trim() ? value.trim().slice(0, max) : undefined;
+
 exports.createBooking = async (req, res) => {
-  const { sessionId, userDescription } = req.body;
+ const { sessionId, userDescription, aiRecommendation, instructorNote } = req.body;
   if (!mongoose.isValidObjectId(sessionId)) {
     throw new BookingError(400, 'A valid sessionId is required.');
   }
@@ -15,11 +18,13 @@ exports.createBooking = async (req, res) => {
   await reserveSpot(sessionId);
 
   try {
-    const booking = await Booking.create({
-      userId: req.user.id,
-      sessionId,
-      userDescription: typeof userDescription === 'string' ? userDescription.trim() : undefined,
-    });
+   const booking = await Booking.create({
+  userId: req.user.id,
+  sessionId,
+  userDescription: clean(userDescription, 1000),
+  aiRecommendation: clean(aiRecommendation, 500),
+  instructorNote: clean(instructorNote, 800),
+});
     res.status(201).json({ booking });
   } catch (err) {
     await releaseSpot(sessionId); // give the spot back if saving failed
