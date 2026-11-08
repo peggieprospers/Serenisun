@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { typeLabel } from '../components/ServiceCard';
@@ -9,6 +9,12 @@ export default function ServiceDetail() {
   const { id } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+// Only use the guide's output if it was for THIS service
+  const guide =
+    location.state && location.state.fromGuide && location.state.serviceId === id
+      ? location.state
+      : null;
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -30,13 +36,23 @@ export default function ServiceDetail() {
     setError('');
     setBusyId(sessionId);
     try {
-      await api('/api/bookings', { method: 'POST', body: { sessionId } });
-      setMessage('You are booked! Your session will appear on your dashboard.');
+      await api('/api/bookings', {
+        method: 'POST',
+        body: {
+          sessionId,
+          ...(guide && {
+            userDescription: guide.description,
+            aiRecommendation: guide.reason,
+            instructorNote: guide.instructorNote,
+          }),
+        },
+      });
+      setMessage('Booking confirmed.');
+      setReloadKey((key) => key + 1);
     } catch (err) {
       setError(err.message);
     } finally {
       setBusyId(null);
-      setReloadKey((k) => k + 1); // refresh the spots left either way
     }
   }
 
@@ -57,6 +73,13 @@ export default function ServiceDetail() {
         {service.isOnline && ' · Online'}
       </p>
       <p>{service.description}</p>
+
+{guide && (
+  <aside className="guide-note">
+    <strong>Your guide suggests this session</strong>
+    <p>{guide.reason}</p>
+  </aside>
+)}
 
       <h2>Open sessions</h2>
       {message && <p className="success" role="status">{message}</p>}

@@ -15,6 +15,7 @@ export default function Navbar() {
       <Link to="/" className="brand">Serenisun</Link>
       <nav>
         <Link to="/services">Services</Link>
+        <Link to="/guide">AI Guide</Link>
         {user ? (
           <>
             <Link to="/dashboard">Dashboard</Link>

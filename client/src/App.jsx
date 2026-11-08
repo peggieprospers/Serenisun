@@ -8,7 +8,7 @@ import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import Dashboard from './pages/Dashboard';
 import RescheduleBooking from './pages/RescheduleBooking';
-
+import Guide from './pages/Guide';
 export default function App() {
   return (
     <>
@@ -27,6 +27,8 @@ export default function App() {
   path="/bookings/:id/reschedule"
   element={<ProtectedRoute><RescheduleBooking /></ProtectedRoute>}
 />
+     <Route path="/guide" element={<ProtectedRoute><Guide /></ProtectedRoute>} />
+     
       </Routes>
     </>
   );

@@ -25,6 +25,12 @@ export default function BookingCard({ booking, onCancel, cancelling }) {
             <a href={session.meetingLink} target="_blank" rel="noreferrer">Join online</a>
           </div>
         )}
+        {booking.instructorNote && (
+  <div className="note">
+    <strong>Note for your instructor</strong>
+    <p>{booking.instructorNote}</p>
+  </div>
+)}
       </div>
 
       {upcoming && (
