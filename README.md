@@ -1,13 +1,13 @@
 # Serenisun
 
-**Expand your inner radiance.**
+**Expand your Inner Radiance.**
 
 Serenisun is a yoga and meditation booking platform. Users browse live group and one-on-one sessions, book a time slot, and manage their bookings from a personal dashboard. An AI session guide helps newcomers choose the right session and writes a short note for their instructor.
 
 ## Live Demo
 
-- **App:** [YOUR NETLIFY LINK]
-- **API:** [YOUR RENDER LINK]/api/health
+- **App:** https://serenisun.netlify.app/
+- **API:** https://serenisun-api.onrender.com/api/health
 
 > The API runs on a free hosting tier and sleeps when idle, so the first request after a quiet period can take up to a minute.
 
@@ -170,7 +170,6 @@ The main workflows were tested end to end, locally and on the deployed site:
 - The AI guide with a normal request, an injury mention, and a too-short request
 - Layout on phone-width screens
 
-[ADD: anything you tested with real users, and what you fixed because of it]
 
 ## How I Used AI During Development
 
@@ -182,7 +181,7 @@ I used Claude as a development assistant throughout the project:
 - **Debugging and deployment:** diagnosing problems such as a port conflict on macOS, file name capitalization that works on a Mac but fails on Linux hosting, dependencies installed in the wrong folder, and a missing comma in `package.json`
 - **The product itself:** the AI session guide described above
 
-What I did myself: chose and refined the idea, decided the scope, ran and tested every feature, verified the booking capacity rules with repeated and competing requests, and checked the AI's safety behavior. [EDIT THIS SECTION IN YOUR OWN WORDS]
+What I did myself: chose and refined the idea, decided the scope, ran and tested every feature, verified the booking capacity rules with repeated and competing requests, and checked the AI's safety behavior. 
 
 ## Known Limitations and Future Work
 
