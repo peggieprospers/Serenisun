@@ -3,14 +3,17 @@ const mongoose = require('mongoose');
 const Service = require('./models/Service');
 const Instructor = require('./models/Instructor');
 const Session = require('./models/Session');
+const Booking = require('./models/Booking');
 
 async function seed() {
   await mongoose.connect(process.env.MONGODB_URI);
 
   // Start fresh so the script can be run again safely
+  await Booking.deleteMany({});
   await Session.deleteMany({});
   await Service.deleteMany({});
   await Instructor.deleteMany({});
+
 
   const [asha, daniel] = await Instructor.insertMany([
     { name: 'Asha Rivera', bio: 'Yoga teacher focused on gentle, beginner-friendly flows.', specialties: ['yoga', 'beginners'] },
