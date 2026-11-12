@@ -2,6 +2,14 @@
 
 **Expand your Inner Radiance.**
 
+<img src="docs/home.png" alt="Serenisun home page" width="720">
+
+<img src="docs/services.png" alt="Serenisun services page" width="720">
+
+<img src="docs/dashboard.png" alt="Serenisun dashboard with upcoming sessions" width="720">
+
+<img src="docs/AI-Guide.png" alt="Serenisun guidance with AI recommendation" width="720">
+
 Serenisun is a yoga and meditation booking platform. Users browse live group and one-on-one sessions, book a time slot, and manage their bookings from a personal dashboard. An AI session guide helps newcomers choose the right session and writes a short note for their instructor.
 
 ## Live Demo
