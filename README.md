@@ -1,5 +1,7 @@
 # Serenisun
 
+**Project documentation:** [Serenisun.pdf](docs/Serenisun.pdf)
+
 **Expand your Inner Radiance.**
 
 <img src="docs/home.png" alt="Serenisun home page" width="720">
